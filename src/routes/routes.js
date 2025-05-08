@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const { registerUser, loginUser } = require('../controllers/userController'); 
+const { registerUser, loginUser } = require('../Controllers/userController'); 
 const { createEvent, editEvent, deleteEvent, getEvents } = require('../Controllers/eventController'); 
 const Event = require('../Models/Event'); 
 const Booking = require('../Models/Booking'); 
