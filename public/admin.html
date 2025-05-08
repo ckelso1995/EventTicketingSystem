@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+
+<body>
+    <div class="container">
+        <h1 class="welcome-title">Admin Panel</h1>
+
+        <!-- add Event Form -->
+        <div class="form-container">
+            <h2>Add Event</h2>
+            <form id="add-event-form" class="form">
+                <input type="text" name="title" placeholder="Title" required>
+                <textarea name="description" placeholder="Description"></textarea>
+                <input type="text" name="category" placeholder="Category">
+                <input type="text" name="venue" placeholder="Venue" required>
+                <input type="date" name="date" required>
+                <input type="time" name="time">
+                <input type="number" name="seatCapacity" placeholder="Seat Capacity" required>
+                <input type="number" name="price" placeholder="Price" required>
+                <button type="submit" class="form-button">Add Event</button>
+            </form>
+        </div>
+
+        <!-- view bookings-->
+        <div class="form-container">
+            <h2>View Bookings</h2>
+            <form id="filter-bookings-form" class="form">
+                <input type="text" name="email" placeholder="User Email">
+                <input type="text" name="title" placeholder="Event Title">
+                <button type="submit" class="form-button">Filter Bookings</button>
+            </form>
+            <div id="bookings-list" class="bookings-list">
+            </div>
+        </div>
+
+
+        <!-- svents List -->
+        <div id="events-list" class="events-list">
+            <h2>Manage Events</h2>
+        </div>
+    </div>
+
+    <script src="/js/admin.js"></script>
+
+
+</body>
+</html>

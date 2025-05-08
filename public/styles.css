@@ -1,0 +1,173 @@
+﻿
+/* general styles for the entire application */
+body {
+    font-family: Garamond, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #555;
+    color: #fff;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+ /* had some issues with the top of the page getting cut off so some code is left over from trying out different things*/
+.header-placeholder {
+    height: 60px; 
+    width: 100%;
+}
+
+
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px; 
+    background-color: #333;
+    color: #fff;
+    z-index: 1000; 
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+
+.container {
+    text-align: center;
+    margin-top: 60px;
+    margin: 0 auto;
+    padding: 25px;
+    background: #333;
+    color: #fff; 
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1); 
+    width: 90%;
+    box-sizing: border-box;
+    max-width: 650px;
+}
+
+.welcome-title {
+    font-size: 2.5rem;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.description {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.links {
+    margin-bottom: 20px;
+}
+
+.link-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+    .link-button:hover {
+        background-color: #0056b3;
+    }
+
+.form-container {
+    margin-bottom: 20px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+    .form input {
+        padding: 10px;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+.form-button {
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    .form-button:hover {
+        background-color: #218838;
+    }
+                                            /* events page css */
+.events-list {
+    margin-top: 20px;
+}
+
+.event {
+    padding: 15px;
+    margin-bottom: 15px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+    .event h2 {
+        margin: 0 0 10px;
+        color: #007bff;
+    }
+
+    .event p {
+        margin: 5px 0;
+        color: #555;
+    }
+                            /* delete button for deleting events on admin page */
+.delete-button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+    .delete-button:hover {
+        background-color: #c82333;
+    }
+                      /* admin button, wanted to do something a little different */
+.admin-access {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.admin-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    .admin-button:hover {
+        background-color: #0056b3;
+    }

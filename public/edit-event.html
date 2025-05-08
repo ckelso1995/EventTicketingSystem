@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Event</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="welcome-title">Edit Event</h1>
+
+       
+        <div class="form-container">
+            <form id="edit-event-form" class="form">
+                <input type="text" name="title" placeholder="Title" required>
+                <textarea name="description" placeholder="Description"></textarea>
+                <input type="text" name="category" placeholder="Category">
+                <input type="text" name="venue" placeholder="Venue" required>
+                <input type="date" name="date" required>
+                <input type="time" name="time">
+                <input type="number" name="seatCapacity" placeholder="Seat Capacity" required>
+                <input type="number" name="price" placeholder="Price" required>
+                <button type="submit" class="form-button">Save Changes</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>document.addEventListener('DOMContentLoaded', async () => {
+
+    //temp storage for code till i figure out whats wrong -- dont have the time so permenant storege it seems.
+
+
+          
+            const urlParams = new URLSearchParams(window.location.search);
+            const eventId = urlParams.get('id');
+
+            if (!eventId) {
+                alert('Error: Event id is missing.');
+                window.location.href = '/admin.html';
+                return;
+            }
+
+         
+            const response = await fetch(`/api/events/${eventId}`);
+            const event = await response.json();
+
+      
+            function formatDate(dateString) {
+                const date = new Date(dateString);
+                if (isNaN(date)) return ''; 
+                const year = date.getFullYear();
+                const month = (date.getMonth() + 1).toString().padStart(2, '0');
+                const day = date.getDate().toString().padStart(2, '0');
+                return `${year}-${month}-${day}`;
+            }
+            const editForm = document.getElementById('edit-event-form');
+            editForm.title.value = event.title || '';
+            editForm.description.value = event.description || '';
+            editForm.category.value = event.category || '';
+            editForm.venue.value = event.venue || '';
+            editForm.date.value = formatDate(event.date);
+            editForm.time.value = event.time || '';
+            editForm.seatCapacity.value = event.seatCapacity || '';
+            editForm.price.value = event.price || '';
+
+        
+            editForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const formData = new FormData(editForm);
+                const data = Object.fromEntries(formData.entries());
+
+                const response = await fetch(`/events/${eventId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+
+                if (response.ok) {
+                    alert('Event updated successfully!');
+                    window.location.href = '/admin.html';
+                } else {
+                    const error = await response.json();
+                    alert(`Error: ${error.message}`);
+                }
+            });
+        });
+
+</script>
+</body>
+</html>
+

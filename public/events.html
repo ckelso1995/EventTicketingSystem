@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Events</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="welcome-title">Browse Events</h1>
+
+        <!-- filters for page -->
+        <form id="filter-form" class="form">
+            <input type="text" name="category" placeholder="Category">
+            <input type="date" name="date" placeholder="Date">
+            <input type="text" name="location" placeholder="Location">
+            <button type="submit" class="form-button">Filter</button>
+        </form>
+
+        <!-- events List -->
+        <div id="events-list" class="events-list">
+        </div>
+    </div>
+    <!-- button to go to admin page-->
+    <div class="admin-access">
+        <button onclick="window.location.href='/admin'" class="form-button admin-button">Go to Admin Page</button>
+    </div>
+
+    <script src="/js/event.js"></script>
+</body>
+</html>
