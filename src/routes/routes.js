@@ -55,6 +55,8 @@ router.post('/bookings', async (req, res) => {
             return res.status(400).json({ message: 'User, event, and quantity are required.' });
         }
 
+      
+
         const eventDetails = await Event.findById(event);
         if (!eventDetails) {
             return res.status(404).json({ message: 'Event not found.' });

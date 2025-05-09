@@ -9,8 +9,8 @@
         }
 
     // should show events from the database
-    async function fetchEvents(filters = { }) {
-            const query = new URLSearchParams(filters).toString();
+async function fetchEvents(filters = {}) {
+    const query = new URLSearchParams(filters).toString();
     const response = await fetch(`/api/events?${query}`);
     const events = await response.json();
 
@@ -19,27 +19,26 @@
 
     if (events.length === 0) {
         eventsList.innerHTML = '<p>No events found.</p>';
-    return;
-            }
+        return;
+    }
             //code to grab and view event details and calculate available seats
-            events.forEach(event => {
-                const availableSeats = event.seatCapacity - event.bookedSeats;
-    const eventDiv = document.createElement('div');
-    eventDiv.className = 'event';
-    eventDiv.innerHTML = `
-    <h2>${event.title}</h2>
-    <p>${event.description || 'No description available.'}</p>
-    <p><strong>Category:</strong> ${event.category || 'N/A'}</p>
-    <p><strong>Date:</strong> ${new Date(event.date).toLocaleDateString()}</p>
-    <p><strong>Time:</strong> ${event.time || 'N/A'}</p>
-    <p><strong>Location:</strong> ${event.venue || 'N/A'}</p>
-    <p><strong>Available Seats:</strong> ${availableSeats}</p>
-    <button onclick="window.location.href='/booking.html?eventId=${event._id}'" class="form-button book-button">Book Now</button>
-    `;
-    eventsList.appendChild(eventDiv);
-            });
-        }
-
+    events.forEach(event => {
+        const availableSeats = event.seatCapacity - event.bookedSeats;
+        const eventDiv = document.createElement('div');
+        eventDiv.className = 'event';
+        eventDiv.innerHTML = `
+            <h2>${event.title}</h2>
+            <p>${event.description || 'No description available.'}</p>
+            <p><strong>Category:</strong> ${event.category || 'N/A'}</p>
+            <p><strong>Date:</strong> ${new Date(event.date).toLocaleDateString()}</p>
+            <p><strong>Time:</strong> ${convertToStandardTime(event.time)}</p>
+            <p><strong>Location:</strong> ${event.venue || 'N/A'}</p>
+            <p><strong>Available Seats:</strong> ${availableSeats}</p>
+            <button onclick="window.location.href='/booking.html?eventId=${event._id}'" class="form-button book-button">Book Now</button>
+        `;
+        eventsList.appendChild(eventDiv);
+    });
+}
         // form submission and filter dynamically
         document.getElementById('filter-form').addEventListener('submit', async (e) => {
         e.preventDefault();
